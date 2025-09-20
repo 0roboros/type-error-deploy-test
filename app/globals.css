@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* No global colors; components decide their own colors */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+}
+
+/* Smooth scroll and base background */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg: 255 255 255;
+  --fg: 17 24 39; /* gray-900 */
+  --muted: 107 114 128; /* gray-500 */
+  --primary: 99 102 241; /* indigo-500 */
+  --primary-dark: 79 70 229; /* indigo-600 */
+  --ring: 199 210 254; /* indigo-100 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 3 7 18; /* gray-950 */
+    --fg: 243 244 246; /* gray-100 */
+    --muted: 156 163 175; /* gray-400 */
+    --primary: 129 140 248; /* indigo-400 */
+    --primary-dark: 99 102 241; /* indigo-500 */
+    --ring: 55 48 163; /* indigo-800 */
+  }
+}
+
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+
+/* Subtle gradient background helpers */
+.gradient-hero {
+  background-image:
+    radial-gradient(1200px 600px at 80% -10%, rgba(99, 102, 241, 0.25), rgba(99, 102, 241, 0) 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(236, 72, 153, 0.25), rgba(236, 72, 153, 0) 60%);
+}
+
+.card {
+  @apply rounded-2xl border border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur shadow-[0_8px_30px_rgb(0,0,0,0.06)];
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2;
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.25);
+}
+
+.btn-primary {
+  color: white;
+  background: rgb(var(--primary));
+}
+.btn-primary:hover {
+  background: rgb(var(--primary-dark));
+}
+.btn-outline {
+  @apply border border-white/20;
+  color: rgb(var(--fg));
+  background: transparent;
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.badge {
+  @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium;
+  background: rgba(99, 102, 241, 0.12);
+  color: rgb(var(--primary));
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.section {
+  @apply mx-auto max-w-6xl px-6;
+}
+
+.kbd {
+  @apply rounded-md border border-white/20 bg-white/10 px-2 py-1 text-xs font-mono;
+}
+
+.shadow-ring {
+  box-shadow: 0 0 0 8px rgba(199, 210, 254, 0.2);
+}
